@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Admin Access</title>
+    <style>
+        body {
+            /* Centers everything and makes it look like a dark-mode gaming site */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1e1e2f;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden; /* Prevents scrollbars from appearing when the button moves */
+        }
+        
+        h1 {
+            margin-bottom: 50px;
+        }
+
+        #runaway-btn {
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #4CAF50; /* A nice gaming green */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            position: absolute; /* This is the secret sauce that lets us move it */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: top 0.15s ease-out, left 0.15s ease-out; /* Makes the jump look smooth */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Claim your Admin access for the SMP!</h1>
+    
+    <button id="runaway-btn">Click to Claim</button>
+
+    <script>
+        const button = document.getElementById('runaway-btn');
+
+        // This triggers the moment the mouse enters the button's area
+        button.addEventListener('mouseover', () => {
+            // Get the width and height of the browser window
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            // Get the width and height of the button itself so it doesn't go off-screen
+            const buttonWidth = button.offsetWidth;
+            const buttonHeight = button.offsetHeight;
+
+            // Calculate a random X and Y coordinate within the visible screen
+            const randomX = Math.floor(Math.random() * (windowWidth - buttonWidth));
+            const randomY = Math.floor(Math.random() * (windowHeight - buttonHeight));
+
+            // Apply the new coordinates to the button
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        });
+    </script>
+
+</body>
+</html>
